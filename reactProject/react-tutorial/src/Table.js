@@ -5,8 +5,13 @@ function TableHeader() {
     return (
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Job</th>
+                <th>City #</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Population</th>
+                <th>Type</th>
+                <th>KM^2</th>
+                <th>Density/KM</th>
             </tr>
         </thead>
     );
@@ -28,8 +33,14 @@ const TableBody = props => {
         //for example, key = index 0, import that row.name, then the row.job, then on to index 1.
         //this will iterate over the whole data set no matter how many are in it.
             <tr key={index}>
-                <td>{row.name}</td>
-                <td>{row.job}</td>
+                <td>{row.CityRank}</td>
+                <td>{row.CityName}</td>
+                <td>{row.Country}</td>
+                <td>{row.Population}</td>
+                <td>{row.CityType}</td>
+                <td>{row.CityKM}</td>
+                <td>{row.DensityKM}</td>
+                            
             </tr>
         );
     });

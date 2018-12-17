@@ -8,7 +8,8 @@ class App extends Component {
       {name: 'Steve', age: 35},
       {name: 'Bob', age: 40},
       {name: 'Frank', age: 50}
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -37,6 +38,12 @@ class App extends Component {
     )
   }
 
+  togglePersonsHandler = () => {
+    //const doesShow = this.state.showPersons;
+    //this.setState({showPersons: !doesShow});
+    this.setState({showPersons: !this.state.showPersons});
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -46,16 +53,36 @@ class App extends Component {
       curson: 'pointer'
     };
 
+    let persons;
+    
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+              <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age} 
+                click={this.switchNameHandler.bind(this, 'Steve!')}/>
+              <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                changed={this.nameChangedHandler}/>
+              <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age}>
+                Children prop</Person>
+            </div> 
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button style={style} onClick={ () => this.switchNameHandler('Steeeeeeve')}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} 
-              click={this.switchNameHandler.bind(this, 'Steve!')}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}
-              changed={this.nameChangedHandler}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>Children prop</Person>
+        <button 
+          style={style} 
+          onClick={ () => this.togglePersonsHandler()}>Toggle Persons</button>
+        {persons}
+            
       </div>
 
       //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Yo!'));

@@ -5,9 +5,9 @@ import Person from'./Person/Person';
 class App extends Component {
   state = {
     persons: [
-      {name: 'Steve', age: 35},
-      {name: 'Bob', age: 40},
-      {name: 'Frank', age: 50}
+      {id: 1, name: 'Steve', age: 35},
+      {id: 2, name: 'Bob', age: 40},
+      {id: 3, name: 'Frank', age: 50}
     ],
     showPersons: false
   }
@@ -25,10 +25,11 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    //const persons = this.state.persons.slice(); //preferred method below, "spread" ...
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState( {persons: persons});
-  }
+  } 
 
   togglePersonsHandler = () => {
     //const doesShow = this.state.showPersons;
@@ -54,7 +55,8 @@ class App extends Component {
              return <Person 
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
-                age={person.age} />
+                age={person.age}
+                key={person.id} /> //use a unique ID, maybe the one from the database you are pulling from
           })}
               
             </div> 

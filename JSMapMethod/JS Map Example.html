@@ -15,14 +15,17 @@ let array1 = [4,16,64];
 console.log(array1);
 console.log("works");
 
-let array2 = array1.map(  //this works on each item in the array1 and takes it into a function
+/*let array2 = array1.map(  //this works on each item in the array1 and takes it into a function
     (num) => {            //this function, takes each array1 item, as "num" and runs the code below
         return num * 2;   //each item, "num" is multiplied by 2 and saved to array2
     }
-);
+);*/
+
+array2 = array1.map( (x) =>  x * 2 );
 console.log(array2);
 
 
 
 </script>
 </html>
+

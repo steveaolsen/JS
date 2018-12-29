@@ -44,7 +44,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      color: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -54,6 +55,7 @@ class App extends Component {
     let persons;
     
     if (this.state.showPersons) {
+      style.backgroundColor = 'red';
       persons = (
         <div>
           {this.state.persons.map((person, id) => {
@@ -70,10 +72,16 @@ class App extends Component {
       );
     }
 
+  let classes = [];
+  if (this.state.persons.length === 2) {
+    classes = ['red'];
+  } else if (this.state.persons.length < 2) {
+    classes = ['red bold'];
+  }
+
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
+        <p className={classes}>Text Text Text Text</p>
         <button 
           style={style} 
           onClick={ () => this.togglePersonsHandler()}>Toggle Persons</button>

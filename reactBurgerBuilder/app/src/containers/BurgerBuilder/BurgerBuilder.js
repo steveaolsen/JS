@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../components/hoc/Aux';
+import Aux from '../../components/HigherOrder/AuxContainer';
 
 class BurgerBuilder extends Component {
     render () {

@@ -9,23 +9,12 @@ class App extends Component {
 
     state = {
         userInput: "Enter Your City's Population",
-        userRank: "This Will Display A Rank Once You Input A Number",
-        popArray: []
-                        
+        userRank: "Your City's Rank: "                     
     }
 
-   /* getPopFromCities = (cityData) => {
-        if (this.state.popArray.length < 1) {
-            let i = 0;
-            let citiesCopy = cityData;
-            let popOnly = [];
-            for (i = 0; i < citiesCopy.length; i++) {
-                popOnly.push(citiesCopy[i].population);
-            }
-            this.setState( {popArray: popOnly} )
-        }
-    }   */
+    
 
+    
 
     popChanger = (event) => {
         let userPop = event.target.value;
@@ -38,9 +27,7 @@ class App extends Component {
         this.setState( {userInput: clearText } );
     }
 
-    popRanker = () => {
-        //figure out how to rank the population against the data in Cities
-    }
+    
 
     render() {
 
@@ -52,8 +39,9 @@ class App extends Component {
                 value={this.state.userInput}
             />
         )
+
         
-        //this.getPopFromCities(cities);
+        
 
         return (
        
@@ -62,7 +50,6 @@ class App extends Component {
                 <p>Your City's Population is: {this.state.userInput}</p>
                 <p>{this.state.userRank}</p>
                 <Table characterData = {cities} />
-                {console.log(this.popArray)}
             </div>
             
         );

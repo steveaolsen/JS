@@ -14,18 +14,26 @@ class App extends Component {
 
     popChanger = (event) => {
         let userPop = event.target.value;
-        userPop = userPop.replace(/,/g, '');
-        this.setState( {userInput: userPop } );
+        if (/^\d*$/.test(userPop)) {
+            this.setState( {userInput: userPop } );
+        }
     }
               
     popClear = (event) => {
-        const clearText = "";
-        this.setState( {userInput: clearText } );
+        this.setState( {userInput: '' } );
     }
 
-    popRanker = (rank) => {
+    /*popRanker = (array, number) => {
+        let rank = 0;
 
-    }
+        for (let i=0; i<array.length; i++) {
+            if (array[i] > number) {
+                rank++;
+                
+            }
+        }
+        this.setState({userRank: rank});
+    }*/
 
     
 
@@ -46,8 +54,8 @@ class App extends Component {
             cityPopulations.push(cities[i].Population);
         }
 
+            
         
-
         
         return (
        

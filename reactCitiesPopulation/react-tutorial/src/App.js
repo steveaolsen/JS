@@ -12,10 +12,6 @@ class App extends Component {
         userRank: "Your City's Rank: "                     
     }
 
-    
-
-    
-
     popChanger = (event) => {
         let userPop = event.target.value;
         userPop = userPop.replace(/,/g, '');
@@ -25,6 +21,10 @@ class App extends Component {
     popClear = (event) => {
         const clearText = "";
         this.setState( {userInput: clearText } );
+    }
+
+    popRanker = (rank) => {
+
     }
 
     
@@ -40,9 +40,15 @@ class App extends Component {
             />
         )
 
-        
+        let cityPopulations = [];
+
+        for (let i=0; i<cities.length; i++) {
+            cityPopulations.push(cities[i].Population);
+        }
+
         
 
+        
         return (
        
             <div>

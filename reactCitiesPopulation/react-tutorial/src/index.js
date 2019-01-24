@@ -11,4 +11,4 @@ import './index.css';
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));//render the App to the root div
+ReactDOM.render(<App />, document.getElementById('root'));

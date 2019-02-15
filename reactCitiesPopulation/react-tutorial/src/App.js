@@ -33,7 +33,12 @@ class App extends Component {
 
     rankIt = () => {
         let ranker = 1;
-        let notBigger = "Your City is Not Big Enough to Make the List";
+        let notBigger = (
+            <div>
+                <p>Zero of the Cities on the List</p>
+                <h1>Boom Roasted</h1>
+            </div>
+        );
         for (let j=0; j<cities.length; j++) {
             
             if (this.state.userInput < cities[j].Population) {

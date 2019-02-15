@@ -9,32 +9,49 @@ class App extends Component {
 
     state = {
         userInput: "Enter Your City's Population",
-        userRank: "Your City's Rank: "                     
+        userRank: "Enter a Population and Click the Button",   
+        biggerThan: ""
     }
+    
 
     popChanger = (event) => {
-        let userPop = event.target.value;
+        let userPop = event.target.value;//save the event as userPop
+
         if (/^\d*$/.test(userPop)) {
-            this.setState( {userInput: userPop } );
-        }
+            this.setState( {userInput: userPop } );//tests userPop and sets state
+        }       
     }
               
     popClear = (event) => {
-        this.setState( {userInput: '' } );
+
+        if (this.state.userInput === "Enter Your City's Population") {
+            this.setState( {userInput: '' } );
+        } else {
+            this.setState( {userInput : event.value} );
+        }
     }
 
-    /*popRanker = (array, number) => {
-        let rank = 0;
-
-        for (let i=0; i<array.length; i++) {
-            if (array[i] > number) {
-                rank++;
+    rankIt = () => {
+        let ranker = 1;
+        let notBigger = "Your City is Not Big Enough to Make the List";
+        for (let j=0; j<cities.length; j++) {
+            
+            if (this.state.userInput < cities[j].Population) {
+                ranker++;
                 
             }
-        }
-        this.setState({userRank: rank});
-    }*/
+            this.setState( {userRank: ranker} );
 
+            if (this.state.userInput < cities[cities.length - 1].Population) {
+            this.setState( {biggerThan: notBigger } );
+            }
+            else {
+            this.setState( {biggerThan: cities[ranker -1].CityName } );
+            }
+        }
+    }
+
+   
     
 
     render() {
@@ -46,23 +63,16 @@ class App extends Component {
                 onChange={this.popChanger}
                 value={this.state.userInput}
             />
-        )
-
-        let cityPopulations = [];
-
-        for (let i=0; i<cities.length; i++) {
-            cityPopulations.push(cities[i].Population);
-        }
-
-            
-        
+        )       
         
         return (
        
             <div>
                 {textBox}
-                <p>Your City's Population is: {this.state.userInput}</p>
-                <p>{this.state.userRank}</p>
+                <button onClick={this.rankIt}>RANK MY CITY</button>
+                <p>Your City's Population: {this.state.userInput}</p>
+                <p>Your City's Rank: {this.state.userRank}</p>
+                <p>Your City is Bigger Than: {this.state.biggerThan}</p>
                 <Table characterData = {cities} />
             </div>
             
